@@ -12,7 +12,6 @@ check: lab0.h lab0.c
 	-./lab0 --input=testfile --output=testcopy --segfault	
 	-./lab0 --input=testfile --output
 	-./lab0 --input= --output=testcopy
-	-./lab0 --input= --output=testcopy --catch --segfault
 
 clean:
 	-rm testcopy
