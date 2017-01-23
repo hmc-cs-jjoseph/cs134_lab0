@@ -8,6 +8,7 @@ check: lab0.h lab0.c
 	echo "hello world" > testfile
 	./lab0 --input=testfile --output=testcopy
 	cat testcopy
+	# Non-fatal commands: these are supposed to err
 	-./lab0 --input=testfile --output=testcopy --catch --segfault
 	-./lab0 --input=testfile --output=testcopy --segfault	
 	-./lab0 --input=testfile --output
