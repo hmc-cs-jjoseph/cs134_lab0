@@ -28,3 +28,11 @@ Copies the contents of `inputfile` to `outputfile`. `--input` and `--output` are
 _options_
 * `-s`, `--segfault` forces a segmentation fault
 * `-c`, `--catch` catches the segmentation fault, if one is forced.
+
+### References
+All references are called out in comments and listed here:
+* ftp://gd.tuwien.ac.at/languages/c/programming-bbrown/c_075.htm
+* https://www.tutorialspoint.com/c_standard_library/c_function_signal.htm
+* https://www.gnu.org/software/libc/manual/html_node/Getopt-Long-Option-Example.html
+* http://osxdaily.com/2012/04/05/create-tar-gzip/
+* http://www.cs.pomona.edu/classes/cs134/projects/fd_juggling.html

@@ -56,6 +56,8 @@ int main(int argc, char **argv) {
   
   // If the --catch option was specified, raising the catch flag, then register
   // a signal handler.
+  // I looked at the following example:
+  // https://www.tutorialspoint.com/c_standard_library/c_function_signal.htm
   if(catchFlag) {
     signal(SIGSEGV, signalHandler);
   }
@@ -72,6 +74,10 @@ int main(int argc, char **argv) {
 
 
 int redirectAndCopy(char * inFile, char * outFile) {
+  // For open(2), creat(2), and I/O redirection, I used the File Descriptor
+  // Management page on the course website:
+  // www.cs.pomona.edu/classes/cs134/projects/fd_juggling.html
+
   // Attempt to open the input file as a read only file. open(2) returns the
   // file identifier - if it returns negative, then the file could not
   // be opened.
@@ -107,6 +113,8 @@ int redirectAndCopy(char * inFile, char * outFile) {
   char readBuffer[bufferSize];	// For storing bytes read from the input file
   int bytesRead = 1;		// Initialize this as 1 to begin the while loop
 
+  // Reference for read(3) and write(3):
+  // ftp://gd.tuwien.ac.at/languages/c/programming-bbrown/c_075.htm
   while (bytesRead > 0) {	// Keep reading until no more bytes are read from input
     bytesRead = read(0, readBuffer, bufferSize);	// Read 512 bytes
     if (bytesRead > 0) {				// Write all read bytes, if any

@@ -17,3 +17,8 @@ clean:
 	-rm testcopy
 	-rm testfile
 	-rm lab0
+
+dist:
+	# tar example used:
+	# http://osxdaily.com/2012/04/05/create-tar-gzip/
+	tar -cvzf lab0-040161840.tar.gz lab0.h lab0.c README.md img/* Makefile
