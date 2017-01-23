@@ -1,5 +1,8 @@
 GXX = gcc
 
+lab0: lab0.h lab0.c
+	$(GXX) lab0.c -o lab0
+
 check: lab0.h lab0.c
 	$(GXX) -g lab0.c -o lab0
 	echo "hello world" > testfile
@@ -12,6 +15,6 @@ check: lab0.h lab0.c
 	-./lab0 --input= --output=testcopy --catch --segfault
 
 clean:
-	rm testcopy
-	rm testfile
-	rm lab0
+	-rm testcopy
+	-rm testfile
+	-rm lab0

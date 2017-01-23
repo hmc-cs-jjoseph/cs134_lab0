@@ -7,15 +7,14 @@ int main(int argc, char **argv) {
   int segFaultFlag = 0;
   int catchFlag = 0;
   char opt;
-  
+  int optind = 0;
+
   struct option longOptions[] = {
     {"input", required_argument, 0, 'i'},
     {"output", required_argument, 0, 'o'},
     {"segfault", no_argument, 0, 's'},
     {"catch", no_argument, 0, 'c'},
     {0, 0, 0, 0}};
-  int optind = 0;
-  opterr = 0;
   while((opt = getopt_long(argc, argv, "i:o:sc", longOptions, &optind)) != -1) {
     switch(opt){
       case 'i':
@@ -57,12 +56,12 @@ int main(int argc, char **argv) {
 
 int redirectAndCopy(char * inFile, char * outFile) {
   int ifd = open(inFile, O_RDONLY);
-  if (ifd < -1) {
+  if (ifd < 0) {
     fprintf(stderr, "Could not open input file %s.\n", inFile);
     exit(1);
   }
   int ofd = creat(outFile, 0666);
-  if (ofd < -1) {
+  if (ofd < 0) {
     fprintf(stderr, "Could not open output file %s.\n", outFile);
     exit(2);
   }
