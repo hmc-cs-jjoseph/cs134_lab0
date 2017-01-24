@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# useful color definitions
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+# several tests will be performed
+typeset -i test_number=0
+
+# create a new test file 
+make testfile
+
+# test 0: basic copy functionality
+echo "test ${test_number}: basic copy functionality"
+./lab0 --input=testfile --output=testcopy
+status=$?
+if [ $status -ne 0 ]
+then
+  echo -e "${RED} FAIL: return test ${test_number} ${NC}"
+  echo " - return status ${retval}"
+else 
+  echo -e "${GREEN} PASS: return test ${test_number} ${NC}"
+fi
+copy=`cat testcopy`
+correct=`cat testfile`
+if [ "$copy" != "$correct" ] 
+then
+  echo -e "${RED} FAIL: copy test ${test_number} ${NC}"
+  echo " - incorrect copy."
+  echo " - recieved: ${copy}"
+  echo " - expected: ${correct}"
+else
+  echo -e "${GREEN} PASS: copy test ${test_number} ${NC}"
+fi
+
+# test1: catch segfault
+let "test_number++"
+echo "test ${test_number}: catch segfault"
+./lab0 --input=testfile --output=testcopy --catch --segfault
+status=$?
+if [ $status -ne 3 ] 
+then
+  echo -e "${RED} FAIL: return test catch segfault ${NC}"
+  echo " - recieved return value: ${retval}"
+  echo " - expected return value: 3"
+else
+  echo -e "${GREEN} PASS: catch segfault ${NC}"
+fi
+
+# test 2: nonexistant input file
+let "test_number++"
+echo "test ${test_number}: nonexistant input file"
+./lab0 --input= --output=testcopy
+status=$?
+if [ $status -ne 1 ]
+then
+  echo -e "${RED} FAIL: return test nonexistant input file ${NC}"
+  echo " - recieved return value: ${retval}"
+  echo " - expected return value: 1"
+else
+  echo -e "${GREEN} PASS: return test nonexistant input file ${NC}"
+fi
+
+

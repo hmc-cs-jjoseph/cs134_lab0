@@ -11,13 +11,14 @@
 
 ### Build
 Simply run `make` to make the lab0 executable.
-* `make check` makes a lab0 executable with a symbol table for GDB, then runs a series of functionality tests. I don't believe I did this the way that Professor Kampe was looking for, but I wasn't sure how else to do it.
+* `make check` makes a lab0 executable with a symbol table for GDB, then runs a series of functionality tests from the shell script lab0-test 
 	* First, creates a test file called "testfile". 
 	* Next, runs basic functionality check copying "testfile" to "testcopy" and prints the contents of "testcopy", which should read `hello world`.
 	* Performs additional tests for error behavior:
 		* Force and catch a segmentation fault with the --segfault and --catch options
 		* Force a segmentation fault with --segfault without catching
-		* Force exit by omitting exit file
+		* Force exit by omitting input file
+	* run `make clean` to remove testing files
 * `make clean` removes all testing files and the "lab0" executable.
 * `make dist` builds the distribution tarball.
 

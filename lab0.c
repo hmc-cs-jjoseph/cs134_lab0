@@ -52,8 +52,10 @@ int main(int argc, char **argv) {
   }
   // After processing all arguments, take necessary actions:
   // Always attempt to copy the input file to the output file.
-  redirectAndCopy(inputFile, outputFile);
-  
+  int retval = redirectAndCopy(inputFile, outputFile);
+  if (retval > 0) {
+    return retval;
+  }
   // If the --catch option was specified, raising the catch flag, then register
   // a signal handler.
   // I looked at the following example:
